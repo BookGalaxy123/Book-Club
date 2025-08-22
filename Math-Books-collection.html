@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+   <meta name="description" content="Discover free science books and educational resources, from physics and biology to computer science.">
+<meta name="keywords" content="Science Books, Free Science Ebooks, Physics, Biology, Computer Science, Education">
+  <title>Math Learning Books | Free Online Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search a Book..." class="Search-bar">
+  <div class="container">
+    <h1>Book Collection</h1>
+    <div class="book-grid">
+      
+      <div class="book-card">
+          <img src="images/۱۳۰۰ فورمول.png" alt="Math Book">
+          <p>1300فرمول راضی</p>
+          <div class="buttons">
+                 <a href="Books/۱۳۰۰ فرمول ریاضی.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/۱۳۰۰ فرمول ریاضی.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+     <div class="book-card">
+          <img src="images/book1.jpg" alt="physics Book">
+          <p>800سوال فزیک</p>
+           <div class="buttons">
+                <a href="Books/800 سوال فزیک.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/800 سوال فزیک.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+      <div class="book-card" >
+          <img src="images/بانک سوالات کیمیا.png" alt="Chimastry Book">
+          <p>بانک سوالات کیمیا</p>
+           <div class="buttons">
+              <a href="Books/بانک سوالات کیمیا.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/بانک سوالات کیمیا.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+      <div class="book-card" >
+          <img src="images/اساسات الجبر حروفی.png" alt="Chimastry Book">
+          <p>بانک سوالات کیمیا</p>
+           <div class="buttons">
+              <a href="Books/اساسات الجبر حروفی 1.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/my-book.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+            <div class="book-card" >
+          <img src="images/فرادرس ریاضیات.png" alt="Math Book">
+          <p>بانک سوالات کیمیا</p>
+           <div class="buttons">
+              <a href="Books/فرادرسَ ریاضیات.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/فرادرسَ ریاضیات.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+               <div class="book-card" >
+          <img src="images/فرادرس کیمیا.png" alt="Math Book">
+          <p>فرا درس کیمیا</p>
+           <div class="buttons">
+              <a href="Books/فرادرسَ ریاضیات.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/فرادرسَ کیمیا.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+
+
+      <div class="book-card" >
+          <img src="images/مجموعه سوالات لوگارتم.png" alt="logaretm book">
+          <p>بانک سوالات کیمیا</p>
+           <div class="buttons">
+              <a href="Books/مجموعه سوالات لوگارتم.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/my-book.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+    </div>
+
+
+
+    <a href="index.html" class="btn">Back</a>
+  </div>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const filter = this.value.toLowerCase();
+      const cards = document.querySelectorAll('.book-card');
+      cards.forEach(card => {
+        const title = card.querySelector('p').innerText.toLowerCase();
+        card.style.display = title.includes(filter) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+  <button onclick="scrollToTop()"
+id="scrollTopBtn" title="Go to top">⬆️</button>
+<script>
+  window.onscroll = function () {
+    let btn = document.getElementById("scrollTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<script>
+  function incrementDownload(bookId) {
+    let count = localStorage.getItem('download_' + bookId);
+    count = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem('download_' + bookId, count);
+    document.getElementById('count-' + bookId).innerText = `📥 ${count} downloads`;
+  }
+
+  window.onload = function () {
+    const books = ['math1', 'science1', 'english1']; 
+    books.forEach(bookId => {
+      const count = localStorage.getItem('download_' + bookId) || 0;
+      const el = document.getElementById('count-' + bookId);
+      if (el) el.innerText = `📥 ${count} downloads`;
+    });
+  };
+</script>
+
+</body>
+</html>

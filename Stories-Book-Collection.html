@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+   <meta name="description" content="Read and download famous classic novels for free. Collection includes timeless stories from world literature.">
+   <meta name="keywords" content="Novels, Classic Books, Literature, Free Stories, Online Library">
+  <title>Stories Book Collection | Free Online Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search a Book..." class="Search-bar">
+  <div class="container">
+    <h1>Book Collection</h1>
+    <div class="book-grid">
+      
+      <div class="book-card">
+          <img src="images/اشعار فروغ فرخزادpng.png" alt="peom Book">
+          <p>اشعار فروغ فرخزاد</p>
+          <div class="buttons">
+                 <a href="Books/اشعار فروغ فرخزاد.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/اشعار فروغ فرخزاد.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+     <div class="book-card">
+          <img src="images/رمان دختر افغان.png" alt="داستان Book">
+          <p>رمان دختر افغان</p>
+           <div class="buttons">
+                <a href="Books/رمان دختر افغان.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/رمان دختر افغان.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+      <div class="book-card" >
+          <img src="images/بشک سیاه.png" alt="Math Book">
+          <p>رمان دلبر وحشی</p>
+           <div class="buttons">
+              <a href="Books/رمان - پشک سیاه.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/رمان - پشک سیاه.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+   <div class="book-card" >
+          <img src="images/رومان کارمند.png" alt="داستان Book">
+          <p>رمان کارمند نیمه وقت</p>
+           <div class="buttons">
+              <a href="Books/رمان کارمند نیمه وقت.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/رمان کارمند نیمه وقت.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+
+
+       <div class="book-card" >
+          <img src="images/book1.jpg" alt="داستان Book">
+          <p>داستان دانشگاه کابل</p>
+           <div class="buttons">
+              <a href="Books/داستان‌دانشگاه‌ کابل.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/داستان‌دانشگاه‌ کابل.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+      <div class="book-card" >
+          <img src="images/روسپی.png" alt="داستان Book">
+          <p>رمان روسپی</p>
+           <div class="buttons">
+              <a href="Books/روسپی .pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/روسپی .pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+    </div>
+
+
+
+    <a href="index.html" class="btn">Back</a>
+  </div>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const filter = this.value.toLowerCase();
+      const cards = document.querySelectorAll('.book-card');
+      cards.forEach(card => {
+        const title = card.querySelector('p').innerText.toLowerCase();
+        card.style.display = title.includes(filter) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+  <button onclick="scrollToTop()"
+id="scrollTopBtn" title="Go to top">⬆️</button>
+<script>
+  window.onscroll = function () {
+    let btn = document.getElementById("scrollTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<script>
+  function incrementDownload(bookId) {
+    let count = localStorage.getItem('download_' + bookId);
+    count = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem('download_' + bookId, count);
+    document.getElementById('count-' + bookId).innerText = `📥 ${count} downloads`;
+  }
+
+  window.onload = function () {
+    const books = ['math1', 'science1', 'english1']; 
+    books.forEach(bookId => {
+      const count = localStorage.getItem('download_' + bookId) || 0;
+      const el = document.getElementById('count-' + bookId);
+      if (el) el.innerText = `📥 ${count} downloads`;
+    });
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>English Learning Books | Free Online Library</title>
+<meta name="description" content="Free English learning books, grammar guides, vocabulary builders, and storybooks for students of all levels.">
+<meta name="keywords" content="English Learning, Grammar Books, Vocabulary, English Stories, Free English Books, ESL, Online Library">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <input type="text" id="searchInput" placeholder="Search a Book..." class="Search-bar">
+  <div class="container">
+    <h1>Book Collection</h1>
+    <div class="book-grid">
+      
+      <div class="book-card">
+          <img src="images/english 1000.png" alt="English Book">
+          <p>1000 English collecations Book</p>
+          <div class="buttons">
+                 <a href="Books/1000_English_Collocations_.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/1000_English_Collocations_.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+     <div class="book-card">
+          <img src="images/how to speak.png" alt="English Book">
+          <p>How to speak english Book</p>
+           <div class="buttons">
+                <a href="Books/How to Speak English  .pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/How to Speak English  .pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+      <div class="book-card" >
+          <img src="images/grammar.png" alt="English">
+          <p>English grammar Book</p>
+           <div class="buttons">
+              <a href="Books/english_grammar.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/english_grammar.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+      <div class="book-card" >
+          <img src="images/h.to  speak.png" alt="English">
+          <p> How to Speak English Fluently</p>
+           <div class="buttons">
+              <a href="Books/How-to-Speak-English-Fluently_Hanif-Halim-P_compressed.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/How-to-Speak-English-Fluently_Hanif-Halim-P_compressed.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+ 
+
+       <div class="book-card" >
+          <img src="images/Horse.png" alt="English">
+          <p>Glory Horse Story Book</p>
+           <div class="buttons">
+              <a href="Books/Glory-by-Starfall.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/Glory-by-Starfall.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+
+
+
+      <div class="book-card" >
+          <img src="images/the myth.png" alt="English">
+          <p>The myth of statistical inference
+             Book</p>
+           <div class="buttons">
+              <a href="Books/_The_Myth_of_Statistical.pdf" target="_blank" class="view-button">View Online</a>
+               <a href="Books/_The_Myth_of_Statistical.pdf" target="_blank" download onclick="incrementDownload('my-book')" class="download-button"> Download</a>
+               <span id="count-my-book"> 📥 0 Downloads</span>
+          </div>
+      </div>
+    </div>
+
+
+
+    <a href="index.html" class="btn">Back</a>
+  </div>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const filter = this.value.toLowerCase();
+      const cards = document.querySelectorAll('.book-card');
+      cards.forEach(card => {
+        const title = card.querySelector('p').innerText.toLowerCase();
+        card.style.display = title.includes(filter) ? 'block' : 'none';
+      });
+    });
+  </script>
+
+  <button onclick="scrollToTop()"
+id="scrollTopBtn" title="Go to top">⬆️</button>
+<script>
+  window.onscroll = function () {
+    let btn = document.getElementById("scrollTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<script>
+  function incrementDownload(bookId) {
+    let count = localStorage.getItem('download_' + bookId);
+    count = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem('download_' + bookId, count);
+    document.getElementById('count-' + bookId).innerText = `📥 ${count} downloads`;
+  }
+
+  window.onload = function () {
+    const books = ['math1', 'science1', 'english1']; 
+    books.forEach(bookId => {
+      const count = localStorage.getItem('download_' + bookId) || 0;
+      const el = document.getElementById('count-' + bookId);
+      if (el) el.innerText = `📥 ${count} downloads`;
+    });
+  };
+</script>
+
+</body>
+</html>
